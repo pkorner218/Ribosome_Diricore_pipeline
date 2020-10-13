@@ -6,13 +6,15 @@ The Bumpfinder pipeline was created to provide a toolset for the comprehensive a
 
 It was originally designed as a webserver which is the reason that users have to agree to terms and conditions of a webserver and give an email adress. If the pipeline is downloaded and used as standalone tool the acceptance of terms and conditions and the giving of the email adress are only for technical reasons. Instead of an email adress users can just give any string. However the email variable can not be left empty.
 
+## Download 
+
+The large Reference files (`see folder Riboseq_part/REF/`) files are possibly not downloaded correctly if the entire piepline is downloaded via github as zip. Please check this and download Reference files individually if necessary. 
+
+The entire pipepline including reference files is ~18 GB large. Please ensure you have this much space in your system before starting the download.
+One option to decrease space usage is to only download the relevant Reference files for your target species.
+
+
 ## Package Content and Folder structure
-
-The entire pipepline including reference files is ~18 GB large. 
-
-The Analysis_part folder is not included and has to be created by yourself on the level of Riboseq_part and Shiny_part folder.
-
-The large REF files are possibly not downloaded correctly if the entire piepline is downloaded via github as zip. Please check this and download Reference files individually if necessary. 
 
 ./Shiny_Ribopipeline_deliverable\
 ├── Analysis_part\
