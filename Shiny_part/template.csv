@@ -1,0 +1,4 @@
+Comparison_Name	Sample_Name1	Sample_Name2	Condition1	Condition2 
+comp_1_vs_2	sample1.fastq.gz	sample2.fastq.gz	Treatment	WT
+comp_3_vs_4	sample3.fastq.gz	sample4.fastq.gz	Treatment	WT
+comp_5_vs_6	sample5.fastq.gz	sample6.fastq.gz	Treatment	WT
