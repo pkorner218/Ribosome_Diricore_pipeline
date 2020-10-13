@@ -8,7 +8,11 @@ It was originally designed as a webserver which is the reason that users have to
 
 ## Package Content and Folder structure
 
-The downloadable bumpfinder_pipeline.tar.gz file is ~9 GB large. once unpacked it is ~18 GB large. 
+The entire pipepline including reference files is ~18 GB large. 
+
+The Analysis_part folder is not included and has to be created by yourself on the level of Riboseq_part and Shiny_part folder.
+
+The large REF files are possibly not downloaded correctly if the entire piepline is downloaded via github as zip. Please check this and download Reference files individually if necessary. 
 
 ./Shiny_Ribopipeline_deliverable\
 ├── Analysis_part\
