@@ -1,0 +1,7 @@
+This package contains the software of the diricore package. While it can be
+run stand-alone, it is meant to be used in conjunction with the diricore
+docker image and genomic data package (for usage instructions see the
+documentation in the diricore package). Especially the driver scripts (*.sh
+files) assume certain directory structures. Furthermore certain dependencies
+are required to run the software, which are provided by the docker image
+(again, for details see the documentation of the diricore package).

@@ -1,0 +1,4 @@
+3_vs_1_IFN_mIFN	riboseq_3_IFN_R1_001.fastq.gz	riboseq_1_mIFN_R1_001.fastq.gz	IFN	mIFN
+3_vs_2_IFN_mIFN	riboseq_3_IFN_R1_001.fastq.gz	riboseq_2_mIFN_R1_001.fastq.gz	IFN	mIFN
+4_vs_1_IFN_mIFN	riboseq_4_IFN_R1_001.fastq.gz	riboseq_1_mIFN_R1_001.fastq.gz	IFN	mIFN
+4_vs_2_IFN_mIFN	riboseq_4_IFN_R1_001.fastq.gz	riboseq_2_mIFN_R1_001.fastq.gz	IFN	mIFN

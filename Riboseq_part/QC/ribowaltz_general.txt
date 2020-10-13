@@ -1,0 +1,18 @@
+library(riboWaltz)
+library(ggplot2)
+library(data.table)
+
+gtf_file <- "gencode.v19.annotation.gtf"
+
+annotation_dt <- create_annotation(gtfpath = gtf_file)
+
+dir <- getwd()
+
+reads_list <- bamtolist(dir, annotation = annotation_dt, refseq_sep='|')
+
+reads_psite_list <- psite_info(reads_list, psite(reads_list), gtfpath = "gencode.v19.annotation.gtf", refseq_sep='|')
+
+codon_coverage_example <- codon_coverage(reads_psite_list, annotation_dt, psite = FALSE)
+
+cds_coverage_example <- cds_coverage(reads_psite_list, annotation_dt)
+
