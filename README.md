@@ -103,6 +103,7 @@ The pipeline was designed to be used via the R shiny user interface.
 `R -e "shiny::runApp('shiny_share.R')"`
 
 The analys can also be started directly via the command line by using the main.sh script in the ./Riboseq_part folder.
+Take into account that the main.sh script should be started from the folder level of main_shiny.R (see code beneath). 
 The email adress does not serve a purpose at this moment, but the user is required to give a string here. 
 
 `bash ./Riboseq_part/main.sh [./Analysis_part/projectfolder] [species] [anonymous: Yes or No] [email adress] [adapter] [optional adapter2]`
