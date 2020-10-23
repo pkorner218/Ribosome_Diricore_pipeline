@@ -48,6 +48,8 @@ for dir in ${projectfolder}"/output/htseq_out/"*"/";
 
 #####	cp ${projectfolder}"/output/htseq_out/"*".out" ${dir}
 
+	cp ./deseq/DESeq_helper_lib.R ${dir}
+
 	python3 ./deseq/create_deseq_both.py  ${dir}
 
 	cd ${dir}
