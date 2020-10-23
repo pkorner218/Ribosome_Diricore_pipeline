@@ -86,7 +86,7 @@ CM.hc <- hclust(CM.dists)
 ## DESeq analysis
 
 #library(DESeq);
-source("/DATA/pkoerner/packages/Ribopipe/auto/deseq/DESeq_helper_lib.R");
+source("DESeq_helper_lib.R");
 
 ## analysis of count matrix CM
 
