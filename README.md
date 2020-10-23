@@ -8,7 +8,7 @@ It was originally designed as a webserver which is the reason that users have to
 
 ## Download 
 
-The large Reference files (`see folder Riboseq_part/REF/`) files are possibly not downloaded correctly if the entire piepline is downloaded via github as zip. Please check this and download Reference files individually if necessary. 
+The large Reference files (`see folder Riboseq_part/REF/`) files are possibly not downloaded correctly if the entire pipeline is downloaded via github as zip. Please check this and download Reference files individually if necessary. 
 
 The entire pipepline including reference files is ~18 GB large. Please ensure you have this much space in your system before starting the download.
 One option to decrease space usage is to only download the relevant Reference files for your target species.
