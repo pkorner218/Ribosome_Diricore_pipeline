@@ -157,7 +157,6 @@ cp ${projectfolder}/output/transcript/*bam.bed ${projectfolder}/output/bumpfinde
 
 bash first_bumpfinder_pipe.sh ${projectfolder}/output/bumpfinder/ ${Species}
 
-#bash main_bumpfinder_pipe.sh ${projectfolder}/output/bumpfinder/ ${Species}
 
 
 ####################### end of bumpfinder #############################
