@@ -4,7 +4,6 @@
 ## Summary
 The Bumpfinder pipeline was created to provide a toolset for the comprehensive and detailed analysis of differences in total ribosome occupancy on transcripts, ribosomal occupancy across codons, ribosomal stalling, and the underlying causal amino-acid/codons as well as collisions. The pipeline was designed to take ribosomal fastq files, preprocess, align and analyze them, finally creating figures from which the mentioned analytical differences between conditions can be interpreted.  In order to make the usage user friendly and widely accessible the pipeline comes with a shiny user interface which allows the upload of samples and sample information files, as well as the individual further visualization of results after the initial pipeline has finished. 
 
-It was originally designed as a webserver which is the reason that users have to agree to terms and conditions of a webserver and give an email adress. If the pipeline is downloaded and used as standalone tool the acceptance of terms and conditions and the giving of the email adress are only for technical reasons. Instead of an email adress users can just give any string. However the email variable can not be left empty.
 
 ## Download 
 
@@ -13,6 +12,7 @@ The large Reference files (`see folder Riboseq_part/REF/`) files are possibly no
 The entire pipepline including reference files is ~18 GB large. Please ensure you have this much space in your system before starting the download.
 One option to decrease space usage is to only download the relevant Reference files for your target species.
 
+Please ensure that you have permissions to write in the folders and to execute all scripts before attempting to start the analysis ! 
 
 ## Package Content and Folder structure
 
