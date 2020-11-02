@@ -36,15 +36,9 @@ projectfolder=$main"/"$1"/"
 
 Species=$2
 
-anonymous=$3
-
-email=$4
-
-adapter=$5
-
+adapter=$3
 
 echo $Species
-echo $anonymous
 echo $adapter
 
 ############################ variables loaded #######################
