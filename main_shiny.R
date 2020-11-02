@@ -188,28 +188,6 @@ body <- dashboardBody(
 
 			tabItem(tabName = "Run",
 
-			
-				fluidRow(
-					box(
-						width = 12,
-						column(4,textInput('email','Email adress')),
-						column(2,p("")),	
-						column(6,radioButtons("radio_anonymous", label = h3("Do you want your data to be treated Anonymous ?"),
-						choices = list("Yes" = "Yes", "No" = "No"), selected = "No")))
-					),	
-				
-
-				fluidRow(
-					box(
-
- 						width = 12,
-
-						includeHTML("/home/pierre/Ribopipeline/App-1/www/terms.html"), #
-						
-						radioButtons("radio_terms_conditions", label = h3(""),
-						choices = list("Yes" = "Yes", "No" = "No"), selected = "No"))
-					),
-
 	
 				fluidRow(
 
@@ -499,7 +477,7 @@ server <- function(input, output, session) {
 		total_path <- paste('./Analysis_part/',raw_path,'/',sep='')
 
 		if(dir.exists(total_path)){
-			shinyalert("This Path Already exists, The analysis will not start with the given path ! ", " Please change the path name and agree to the terms and condition again before starting the run", type = "error")			
+			shinyalert("This Path Already exists, The analysis will not start with the given path ! ", " Please change the path name before starting the run", type = "error")			
 
 			} else {
 				return(raw_path) 
@@ -635,100 +613,67 @@ server <- function(input, output, session) {
 ########################################################## RUN part ######################
 
 	
-	observeEvent(input$radio_terms_conditions, {
+	adapter_return <- eventReactive(input$run,{
+		adapter_one <- input$adapters
+		return(adapter_one)})
+
+	Species_return <- eventReactive(input$run,{
+		species_chosen <- input$radio_species_genome
+		return(species_chosen)})
+
+	output$bash2 <- renderPrint({
+		adapters <- adapter_return()
+		Species <- Species_return()
+		project_path <- get_path()
+		email_variable <- email_return()
+		total_path <- paste('./Analysis_part/',project_path,sep='')
+		system(paste('./Riboseq_part/main.sh',total_path,Species,input$radio_anonymous,email_variable,adapters)) # start the test.sh script with the user given variables pathname, species, anonymous, email adapters 
+		})
+
+
+	output$bash <- renderPrint({ 
+		project_path <- get_path()
+		totalpath <- paste('mkdir ./Analysis_part/',project_path,sep='') # creation of the project folder
+		req(project_path)
+		system(paste(totalpath))
+		})
+
+	observe({     
+		project_path <- get_path()
+		files <- input$fastq_file[,1]
+		total_path <- paste('./Analysis_part/',project_path,'/',files,sep='')
+		file.copy(input$fastq_file$datapath, total_path) # if all files are uploaded and a path was given/submitted copy the files to this path. Filenames are replaced by numbers...  
+		)}
+		
+	observe({
+		project_path <- get_path()
+		tblfiles <- input$sample_information_additional_1[,1]
+		xtotalpath <- paste('./Analysis_part/',project_path,'/',"2_BumpDEsummary.txt",sep='')
+		file.copy(input$sample_information_additional_1$datapath, xtotalpath) # if all files are uploaded and a path was given/submitted copy the files to this path.  
+		})
+
+	observe({
+		project_path <- get_path()
+		tblfiles <- input$sample_information_additional_2[,1]
+		xtotalpath <- paste('./Analysis_part/',project_path,'/',"3_BumpDEsummary.txt",sep='')
+		file.copy(input$sample_information_additional_2$datapath, xtotalpath) # if all files are uploaded and a path was given/submitted copy the files to this path.  
+		})
+
+	observe({
+		project_path <- get_path()
+		tblfiles <- input$inputFile_sample_information[,1]
+		xtotalpath <- paste('./Analysis_part/',project_path,'/',"summary.txt",sep='')
+		file.copy(input$inputFile_sample_information$datapath, xtotalpath) # if all files are uploaded and a path was given/submitted copy the files to this path.  
+		})
+
+
+	observe({
+		project_path <- get_path()
+		tblfiles <- input$merge_file[,1]
+		xtotalpath <- paste('./Analysis_part/',project_path,'/',"mergefile.txt",sep='')
+		file.copy(input$merge_file$datapath, xtotalpath) # if all files are uploaded and a path was given/submitted copy the files to this path.  
+		})
 	
-	input$radio_terms_conditions == NULL
-
-	if(input$radio_terms_conditions == "Yes"){ # If the terms and conditions are accepted ! 
-		shinyjs::show(id = "myBox_start_analysis") # show the box with the start button 
-
-		project_path <- get_path() # get path
-		total_path <- paste('./Analysis_part/',project_path,sep='') #full later path
-
-		if(dir.exists(total_path)){ # check if directory already exists
-			print("Directory already exists !!!")
-		}else{
-			print("Directory does not exist ") # if directory does not exist copy the files and start bash scripts 
-
-			adapter_return <- eventReactive(input$run,{
-				adapter_one <- input$adapters
-				return(adapter_one)})
-
-			Species_return <- eventReactive(input$run,{
-				species_chosen <- input$radio_species_genome
-				return(species_chosen)})
-
-			output$bash2 <- renderPrint({
-				adapters <- adapter_return()
-				Species <- Species_return()
-				project_path <- get_path()
-				email_variable <- email_return()
-				total_path <- paste('./Analysis_part/',project_path,sep='')
-			
-
-				system(paste('./Riboseq_part/main.sh',total_path,Species,input$radio_anonymous,email_variable,adapters)) # start the test.sh script with the user given variables pathname, species, anonymous, email adapters 
-			})
-
-
-			output$bash <- renderPrint({ 
-				project_path <- get_path()
-
-				totalpath <- paste('mkdir ./Analysis_part/',project_path,sep='') # creation of the project folder
-
-				req(project_path)
-				system(paste(totalpath))
-				})
-
-			observe({     
-				project_path <- get_path()
-				files <- input$fastq_file[,1]
-				total_path <- paste('./Analysis_part/',project_path,'/',files,sep='')
-
-				file.copy(input$fastq_file$datapath, total_path) # if all files are uploaded and a path was given/submitted copy the files to this path. Filenames are replaced by numbers...  
-			observe({
-				project_path <- get_path()
-				tblfiles <- input$sample_information_additional_1[,1]
-				xtotalpath <- paste('./Analysis_part/',project_path,'/',"2_BumpDEsummary.txt",sep='')
-
-				file.copy(input$sample_information_additional_1$datapath, xtotalpath) # if all files are uploaded and a path was given/submitted copy the files to this path.  
-
-			})
-
-			observe({
-				project_path <- get_path()
-				tblfiles <- input$sample_information_additional_2[,1]
-				xtotalpath <- paste('./Analysis_part/',project_path,'/',"3_BumpDEsummary.txt",sep='')
-
-				file.copy(input$sample_information_additional_2$datapath, xtotalpath) # if all files are uploaded and a path was given/submitted copy the files to this path.  
-			})
-
-
-			observe({
-				project_path <- get_path()
-				tblfiles <- input$inputFile_sample_information[,1]
-				xtotalpath <- paste('./Analysis_part/',project_path,'/',"summary.txt",sep='')
-
-				file.copy(input$inputFile_sample_information$datapath, xtotalpath) # if all files are uploaded and a path was given/submitted copy the files to this path.  
-	
-			})
-
-
-			observe({
-				project_path <- get_path()
-				tblfiles <- input$merge_file[,1]
-				xtotalpath <- paste('./Analysis_part/',project_path,'/',"mergefile.txt",sep='')
-				file.copy(input$merge_file$datapath, xtotalpath) # if all files are uploaded and a path was given/submitted copy the files to this path.  
-	
-			})
-			})
-
-	}
-
-	}else{ 
-		shinyjs::hide(id = "myBox_start_analysis") # If the terms and conditions are not accepted the box stays hidden  
-	}
-	})
-
 
 
 ################################################################### visualization part 
@@ -798,11 +743,6 @@ server <- function(input, output, session) {
 
 		vectordf <- as.numeric(array_df[c(input$inputId_ENST_Transcript_RPF),])
 		vectordf2 <- as.numeric(array_df2[c(input$inputId_ENST_Transcript_RPF),])
-
-		#print(vectordf)
-
-		#vectors <- c(vectordf,vectordf2) 
-		#xrange <- range(vectors)
 
 		if(is.null(input$Transcript_RPF_File1)){
 	
