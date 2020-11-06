@@ -28,6 +28,12 @@ fi
 
 bash ./scripts/copy_diribam.sh ${projectfolder}/output/tophat_out/ ${projectfolder}/output/htseq_out/ hqmapped.bam
 
+if [ $species = "mouse" ]; then
+	for file in *bam; do echo $file; samtools view -h $file | awk 'BEGIN{FS=OFS="\t"} (/^@/ && !/@SQ/){print $0} $2~/^SN:[1-9]|^SN:X|^SN:Y|^SN:MT/{print $0}  $3~/^[1-9]|X|Y|MT/{$3="chr"$3; print $0} ' | sed 's/SN:/SN:chr/g' | sed 's/chrMT/chrM/g' | samtools view -bS - > $file"_chr.bam"; done	
+	rm *hqmapped.bam
+fi
+
+
 for file in ${projectfolder}"/output/htseq_out/"*".bam"; do echo $file; samtools view -h $file > ${file}".sam"; done
 
 for file in ${projectfolder}"/output/htseq_out/"*".sam"; do echo $file ; htseq-count -s no -t exon ${file} ${REFfile} > ${file}".out"; done
