@@ -17,9 +17,9 @@ Please ensure that you have permissions to write in the folders and to execute a
 
 ./Shiny_Ribopipeline_deliverable\
 ├── Projectfolder\
-│       └── input\
-│       └── output\
-├── Riboseq_part\
+│       %\t%\└── input\
+│       %\t%└── output\
+├── Riboseq_part
 
 
 Riboseq_part contains all the scripts for the actual ribosome sequencinganalysis as well as the REF subfolder containing all the necessary Reference files. Upon giving a Projectname in the shiny user interface a Projectfolder will be created in the and will be filled automatically with the files and plots that are created during bumpfinder analysis. 
