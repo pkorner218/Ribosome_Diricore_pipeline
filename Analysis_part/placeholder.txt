@@ -1,2 +1,0 @@
-Just for folder structure purposes.
-Can be removed once pipeline is downloaded
