@@ -45,18 +45,13 @@ The output folder contains all further created samples, files and plots.
 
 ./output/\
 ├── align_summaries.txt\
-├── bumpfinder\
 ├── clean\
 ├── cutadapt_summaries.txt\
 ├── h5_files\
-├── htseq_out\
 ├── plots\
-├── RPF_density.pdf\
-├── rpf_R_plotmatrix.csv\
 ├── rpf_summary.csv\
 ├── tophat_out\
-├── transcript\
-└── wig\
+
 
 ## Technical
 The bumpfinder pipeline is a set of scripts in multiple programming languages, utilizing a high number of available softwares and tools. The exact versions and technical details can be obtained from (…). In the following several of the main sofwares which are required are listed.
