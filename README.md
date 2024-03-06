@@ -15,7 +15,7 @@ Please ensure that you have permissions to write in the folders and to execute a
 
 ## Package Content and Folder structure
 
-./Shiny_Ribopipeline_deliverable\
+./Ribopipeline\
 ├── Projectfolder\
 │       &nbsp;&nbsp;&nbsp;└── input\
 │       &nbsp;&nbsp;&nbsp;└── output\
