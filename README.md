@@ -17,8 +17,8 @@ Please ensure that you have permissions to write in the folders and to execute a
 
 ./Shiny_Ribopipeline_deliverable\
 ├── Projectfolder\
-│       &nbsp;&nbsp;└── input\
-│       &nbsp;&nbsp;└── output\
+│       &nbsp;&nbsp;&nbsp;└── input\
+│       &nbsp;&nbsp;&nbsp;└── output\
 ├── Riboseq_part
 
 
